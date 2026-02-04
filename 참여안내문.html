@@ -1,0 +1,335 @@
+<!-- Chosen Palette: PKNU Deep Blue & BTP Emerald Blue (Trust & Innovation) -->
+<!-- Application Structure Plan: 
+    1. Hero Banner: 국립부경대와 부산테크노파크의 공동 주관을 명시하고, 지역 AX 혁신 거버넌스를 강조하는 헤드 슬로건으로 교체.
+    2. Governance Section: 대학(교육/인프라)과 테크노파크(기업지원/네트워크)의 시너지를 시각적으로 표현.
+    3. Interactive Benefit Cards: 기업 혜택 5종을 가독성 높게 배치.
+    4. Participation Type: 일반 협약과 핵심 PBL 참여의 차별점을 비교.
+    5. Contact & RSVP: 담당자 연락처 및 이메일 복사 기능 제공.
+-->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 특화 공동훈련센터 컨소시엄 안내</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Pretendard', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8fafc;
+        }
+
+        .pknu-btp-gradient {
+            background: linear-gradient(135deg, #003375 0%, #006b6b 100%);
+        }
+
+        .participation-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .participation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+
+        .step-line::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Hero Section -->
+    <header class="pknu-btp-gradient text-white pt-24 pb-32 px-4 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto relative z-10 text-center">
+            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 mb-8">
+                <span class="text-sm font-semibold tracking-wide">국립부경대학교 × (재)부산테크노파크 공동 주관</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">
+                부산의 미래, <span class="text-emerald-300">AI 혁신 거버넌스</span>로<br>
+                귀 사의 <span class="text-amber-400">AX 전환</span>을 선도합니다.
+            </h1>
+            <p class="text-xl text-blue-50 max-w-4xl mx-auto mb-12 leading-relaxed opacity-90">
+                대학의 AI 교육 인프라와 부산테크노파크의 산업 지원 전문성이 만났습니다.<br>
+                <strong>「AI 특화 공동훈련센터」</strong>와 함께 실무 인재 양성부터 현장 해결까지 전 과정을 무료로 경험하십시오.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#benefits" class="bg-white text-[#003375] px-10 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition shadow-xl">
+                    참여 기업 혜택 보기
+                </a>
+                <a href="#contact" class="bg-emerald-600/40 backdrop-blur-sm border border-white/30 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-emerald-600/60 transition">
+                    협약 문의하기
+                </a>
+            </div>
+        </div>
+        <!-- Decorative wave -->
+        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#f8fafc] to-transparent"></div>
+    </header>
+
+    <!-- Governance Section -->
+    <section class="max-w-6xl mx-auto px-4 -mt-16 relative z-20">
+        <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-slate-100">
+            <div class="text-center mb-10">
+                <span class="text-blue-600 font-bold text-sm tracking-widest uppercase mb-2 block">Strong Partnership</span>
+                <h2 class="text-2xl font-bold">지역 산업을 이끄는 강력한 연합체</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <div class="bg-slate-50 p-6 rounded-2xl text-center">
+                    <div class="text-4xl mb-4">🏫</div>
+                    <h3 class="font-bold text-slate-900 mb-2">국립부경대학교</h3>
+                    <p class="text-sm text-slate-500">최첨단 AI 인프라 구축 및<br>고숙련 실무 교육과정 운영</p>
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 mb-2">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <span class="text-sm font-bold text-slate-400">공동 참여</span>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl text-center">
+                    <div class="text-4xl mb-4">🏢</div>
+                    <h3 class="font-bold text-slate-900 mb-2">(재)부산테크노파크</h3>
+                    <p class="text-sm text-slate-500">지역 기업 수요 맞춤형 컨설팅 및<br>AX 혁신 거버넌스 확산 지원</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-24 max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-slate-900">참여기업 5대 핵심 혜택</h2>
+            <p class="text-slate-500 mt-4">부경대와 부산TP가 귀 사의 경쟁력 강화를 전방위적으로 지원합니다.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center participation-card">
+                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-graduation-cap text-2xl"></i>
+                </div>
+                <h4 class="font-bold text-slate-800 mb-3 text-lg">재직자 교육</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">전액 무료 AI/AX 역량 강화 훈련 지원</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center participation-card">
+                <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-microscope text-2xl"></i>
+                </div>
+                <h4 class="font-bold text-slate-800 mb-3 text-lg">기술 검증</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">PBL 기반 실무 프로젝트 수행 및 솔루션 도출</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center participation-card">
+                <div class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-id-card-clip text-2xl"></i>
+                </div>
+                <h4 class="font-bold text-slate-800 mb-3 text-lg">인재 선점</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">맞춤형 인재 매칭 및 채용 기회 우선 제공</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center participation-card">
+                <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-comments text-2xl"></i>
+                </div>
+                <h4 class="font-bold text-slate-800 mb-3 text-lg">밀착 코칭</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">현업 복귀 후 발생하는 문제 해결 전문가 지원</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center participation-card">
+                <div class="w-14 h-14 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-chart-line text-2xl"></i>
+                </div>
+                <h4 class="font-bold text-slate-800 mb-3 text-lg">정부 협업</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">지자체·정부 연계 사업 공동 참여 기회 확보</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Participation Types -->
+    <section class="py-24 bg-slate-900 text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold">참여 유형별 맞춤 지원</h2>
+                <p class="text-slate-400 mt-4">귀 사의 AI 도입 단계에 최적화된 참여 형태를 제안합니다.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- General -->
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:border-blue-400/50 transition duration-500">
+                    <div class="flex items-center space-x-4 mb-8">
+                        <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center font-bold">일반</div>
+                        <h3 class="text-2xl font-bold">협약업체</h3>
+                    </div>
+                    <p class="text-slate-400 mb-8 h-12">전반적인 AI 리터러시 함양 및 실무 교육 수강을 원하는 기업</p>
+                    <ul class="space-y-4 mb-10 text-sm">
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-500"></i> <span>AI 기초 및 전문 실무 교육 과정 참여</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-500"></i> <span>AX 이노베이션 포럼 및 세미나 정기 초청</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-500"></i> <span>프롬프트 엔지니어링, 데이터 분석 등</span></li>
+                    </ul>
+                    <div class="text-xs text-slate-500 bg-white/5 p-4 rounded-xl">기업 부담금: <strong>전액 무료</strong></div>
+                </div>
+
+                <!-- PBL -->
+                <div class="bg-gradient-to-br from-blue-700 to-emerald-700 rounded-3xl p-10 shadow-2xl transform md:scale-105">
+                    <div class="flex items-center space-x-4 mb-8">
+                        <div class="w-12 h-12 bg-white/20 text-white rounded-xl flex items-center justify-center font-bold">핵심</div>
+                        <h3 class="text-2xl font-bold">PBL 핵심 협약업체</h3>
+                    </div>
+                    <p class="text-blue-100 mb-8 h-12">현장의 실제 문제를 AI로 해결하고 공정 혁신을 이루고자 하는 기업</p>
+                    <ul class="space-y-4 mb-10 text-sm">
+                        <li class="flex items-center space-x-3"><i class="fas fa-star text-amber-300"></i> <span class="font-bold">과제수행형/문제해결형 PBL 훈련 참여</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-star text-amber-300"></i> <span>전문가 현장 밀착형 AI 코칭 서비스 제공</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-star text-amber-300"></i> <span>기업 맞춤형 AI 모델링 및 공정 최적화</span></li>
+                    </ul>
+                    <div class="text-xs text-blue-200 bg-black/10 p-4 rounded-xl">기업 부담금: <strong>전액 무료 (우선 선발)</strong></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps -->
+    <section class="py-24 max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold">간편한 참여 절차</h2>
+            <p class="text-slate-500 mt-2">기업의 서류 부담을 최소화한 실무 중심 프로세스</p>
+        </div>
+        <div class="space-y-4">
+            <div class="flex items-center p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:border-emerald-500 transition cursor-default">
+                <div class="w-10 h-10 bg-slate-100 text-slate-600 rounded-full flex items-center justify-center font-bold mr-6">01</div>
+                <div class="flex-1">
+                    <h4 class="font-bold">참여 의사 확인 및 상담</h4>
+                    <p class="text-xs text-slate-500 mt-1">문의처를 통한 유형 협의</p>
+                </div>
+                <i class="fas fa-chevron-right text-slate-300"></i>
+            </div>
+            <div class="flex items-center p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:border-emerald-500 transition cursor-default">
+                <div class="w-10 h-10 bg-slate-100 text-slate-600 rounded-full flex items-center justify-center font-bold mr-6">02</div>
+                <div class="flex-1">
+                    <h4 class="font-bold">수요조사 응답</h4>
+                    <p class="text-xs text-slate-500 mt-1">훈련 과정 기획을 위한 구글폼 응답</p>
+                </div>
+                <i class="fas fa-chevron-right text-slate-300"></i>
+            </div>
+            <div class="flex items-center p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:border-emerald-500 transition cursor-default">
+                <div class="w-10 h-10 bg-slate-100 text-slate-600 rounded-full flex items-center justify-center font-bold mr-6">03</div>
+                <div class="flex-1">
+                    <h4 class="font-bold">사업 신청 및 선정</h4>
+                    <p class="text-xs text-slate-500 mt-1">국립부경대-부산TP 컨소시엄 구성</p>
+                </div>
+                <i class="fas fa-chevron-right text-slate-300"></i>
+            </div>
+            <div class="flex items-center p-6 bg-emerald-50 border border-emerald-200 rounded-2xl shadow-sm">
+                <div class="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold mr-6"><i class="fas fa-handshake"></i></div>
+                <div class="flex-1">
+                    <h4 class="font-bold text-emerald-900">MOU 체결 및 사업 착수</h4>
+                    <p class="text-xs text-emerald-700 mt-1">실질적인 AX 지원 서비스 시작</p>
+                </div>
+                <span class="text-xs font-bold text-emerald-600 bg-white px-3 py-1 rounded-full border border-emerald-200">최종 단계</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-white py-24 border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-slate-900 rounded-[3rem] p-12 text-center text-white overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full -mr-32 -mt-32"></div>
+                <h2 class="text-3xl font-bold mb-4">참여 파트너십 문의</h2>
+                <p class="text-slate-400 mb-12">부경대학교와 부산테크노파크가 귀 사의 든든한 AI 파트너가 되겠습니다.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-12 relative z-10">
+                    <div class="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10">
+                        <div class="flex items-center mb-6">
+                            <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">사업 담당자</h4>
+                                <p class="text-xs text-slate-400">국립부경대 산학협력단</p>
+                            </div>
+                        </div>
+                        <p class="text-lg font-bold mb-2">박진모 전임연구원</p>
+                        <p class="text-blue-400 text-sm mb-4">pknukdt@pknu.ac.kr</p>
+                        <p class="text-2xl font-black text-white">051-629-7465</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl">
+                        <h4 class="font-bold text-slate-900 mb-4 flex items-center">
+                            <i class="fas fa-paper-plane text-emerald-600 mr-2"></i> 회신 내용 가이드
+                        </h4>
+                        <ul class="text-sm space-y-3 text-slate-600">
+                            <li class="flex justify-between border-b border-slate-100 pb-2"><span>기업명</span> <span class="font-semibold text-slate-900">필수</span></li>
+                            <li class="flex justify-between border-b border-slate-100 pb-2"><span>담당자/직책</span> <span class="font-semibold text-slate-900">필수</span></li>
+                            <li class="flex justify-between border-b border-slate-100 pb-2"><span>연락처/이메일</span> <span class="font-semibold text-slate-900">필수</span></li>
+                            <li class="flex justify-between"><span>주력 분야</span> <span class="text-slate-400">선택</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+                    <button onclick="copyEmail()" class="bg-emerald-500 text-white px-10 py-4 rounded-xl font-bold hover:bg-emerald-600 transition shadow-lg shadow-emerald-900/40">
+                        이메일 주소 복사
+                    </button>
+                    <a href="tel:051-629-7465" class="bg-white/10 border border-white/20 text-white px-10 py-4 rounded-xl font-bold hover:bg-white/20 transition">
+                        전화 문의
+                    </a>
+                </div>
+            </div>
+            <div id="toast" class="hidden fixed bottom-12 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-8 py-4 rounded-full shadow-2xl z-50 transition-all">
+                <i class="fas fa-check-circle mr-2"></i> 이메일 주소가 복사되었습니다!
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-12 mb-8">
+                <span class="text-lg font-black text-slate-300">PKNU</span>
+                <span class="text-lg font-black text-slate-300">BUSAN TECHNO PARK</span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+                국립부경대학교 산학협력단(K-디지털트레이닝사업단) × (재)부산테크노파크 공동 추진<br>
+                본 안내는 참여 의사 확인을 위한 자료이며, 구체적인 사업 범위는 컨소시엄 협약 후 결정됩니다.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function copyEmail() {
+            const email = "pknukdt@pknu.ac.kr";
+            const el = document.createElement('textarea');
+            el.value = email;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Scroll reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
