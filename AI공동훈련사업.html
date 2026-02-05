@@ -81,7 +81,30 @@
     .bg-pknu-blue { background-color: #0047a0; }
 </style>
 </head> <body class="antialiased">
+<!-- 1. 상단 내비게이션 바 (Body 태그 시작 직후에 추가) -->
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="flex items-center gap-2 text-blue-900 font-bold hover:text-blue-700 transition-colors">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <span class="hidden sm:inline">AI 컨소시엄 허브</span>
+                </a>
+            </div>
+            <div class="flex gap-4">
+                <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 flex items-center gap-1">
+                    <i class="fa-solid fa-arrow-left"></i> 메인으로 돌아가기
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
 
+<!-- 2. 우측 하단 플로팅 홈 버튼 (Footer 직전에 추가 권장) -->
+<a href="index.html" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-blue-700 hover:scale-110 transition-all group" title="메인 화면으로">
+    <i class="fa-solid fa-home text-xl"></i>
+    <span class="absolute right-full mr-3 bg-slate-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">메인 허브로 이동</span>
+</a>
 <!-- Navigation -->
 <nav class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -520,4 +543,5 @@
     }
 </script>
 </body> </html>
+
 
