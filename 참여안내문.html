@@ -50,7 +50,24 @@
     </style>
 </head>
 <body class="text-slate-800">
-
+<!-- 1. 상단 내비게이션 바 (Body 태그 시작 직후에 추가) -->
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="flex items-center gap-2 text-blue-900 font-bold hover:text-blue-700 transition-colors">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <span class="hidden sm:inline">AI 컨소시엄 허브</span>
+                </a>
+            </div>
+            <div class="flex gap-4">
+                <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 flex items-center gap-1">
+                    <i class="fa-solid fa-arrow-left"></i> 메인으로 돌아가기
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
     <!-- Hero Section -->
     <header class="pknu-btp-gradient text-white pt-24 pb-32 px-4 relative overflow-hidden">
         <div class="max-w-6xl mx-auto relative z-10 text-center">
