@@ -202,78 +202,49 @@
     </div>
 </section>
 
-<!-- Governance Structure -->
-<section id="governance" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-slate-800 mb-2">추진 거버넌스 체계</h2>
-            <p class="text-slate-500">교육-데이터-금융이 결합된 4각 편대 모델 (클릭하여 역할 확인)</p>
+<!-- Governance Section (Updated: TP Removed) -->
+    <section class="max-w-6xl mx-auto -mt-16 px-6 relative z-20">
+        <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-slate-100">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">사업 거버넌스: 3각 혁신 체계</h2>
+                <p class="text-slate-500">대학, 교육 전문기관, 금융기관이 직접 연결되어 최단거리 지원 프로세스를 구축합니다.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- PKNU -->
+                <div class="node-card p-8 rounded-2xl bg-blue-50 border-2 border-blue-100 cursor-pointer" onclick="updateGovDetail('pknu')">
+                    <div class="w-16 h-16 bg-pknu-blue text-white rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-lg shadow-blue-200">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 pknu-blue">국립부경대학교</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">사업 전체 총괄 및 최첨단 AI 실습 인프라 제공</p>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-tighter">Main Operator</span>
+                </div>
+
+                <!-- DataEdu -->
+                <div class="node-card p-8 rounded-2xl bg-amber-50 border-2 border-amber-100 cursor-pointer" onclick="updateGovDetail('edu')">
+                    <div class="w-16 h-16 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-lg shadow-amber-200">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-amber-700">(주)데이터에듀</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">산업체 수요 기반 훈련 설계 및 교육 품질 책임</p>
+                    <span class="text-xs font-bold text-amber-600 uppercase tracking-tighter">Education Partner</span>
+                </div>
+
+                <!-- KIBO -->
+                <div class="node-card p-8 rounded-2xl bg-slate-50 border-2 border-slate-200 cursor-pointer" onclick="updateGovDetail('kibo')">
+                    <div class="w-16 h-16 bg-slate-700 text-white rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-lg shadow-slate-300">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">기술보증기금</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">훈련 이수 기업 대상 금융 정책 및 보증 우대 연계</p>
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-tighter">Finance Link</span>
+                </div>
+            </div>
+
+           
         </div>
-
-        <!-- Custom Governance Chart -->
-        <div class="max-w-6xl mx-auto">
-            <!-- Top Node: PKNU -->
-            <div class="flex justify-center mb-12">
-                <div onclick="updateGovDetail('pknu')" class="gov-node bg-[#0047a0] text-white p-8 rounded-2xl shadow-xl w-full max-w-2xl text-center border-4 border-white ring-4 ring-blue-50 relative z-10">
-                    <div class="text-3xl mb-3"><i class="fas fa-university"></i></div>
-                    <h3 class="text-2xl font-bold">국립부경대학교 AI 캠퍼스</h3>
-                    <span class="inline-block bg-blue-800 text-xs px-3 py-1 rounded-full mt-2">주관기관 (Control Tower)</span>
-                    <p class="text-blue-100 text-sm mt-3">
-                        사업 총괄 · AI 전용 인프라(GPU Lab) 구축 · 학사 관리 및 행정 지원<br>
-                        
-                    </p>
-                </div>
-            </div>
-
-            <!-- Middle Nodes: Partners -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 relative">
-                <!-- Connecting Lines (CSS Visuals) -->
-                <div class="hidden md:block absolute top-[-48px] left-1/2 w-0.5 h-12 bg-slate-300 -translate-x-1/2 z-0"></div>
-                <div class="hidden md:block absolute top-[-24px] left-[16.6%] right-[16.6%] h-0.5 bg-slate-300 z-0"></div>
-                <div class="hidden md:block absolute top-[-24px] left-[16.6%] w-0.5 h-6 bg-slate-300 z-0"></div>
-                <div class="hidden md:block absolute top-[-24px] right-[16.6%] w-0.5 h-6 bg-slate-300 z-0"></div>
-
-                <!-- Partner 1 -->
-                <div onclick="updateGovDetail('tp')" class="gov-node bg-white p-6 rounded-xl shadow-lg border border-slate-200 text-center hover:border-blue-400 group relative z-10">
-                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 transition">
-                        <i class="fas fa-database text-xl text-blue-600 group-hover:text-white transition"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-slate-800">부산테크노파크</h4>
-                    <div class="text-slate-500 text-xs mb-2 font-mono">DATA PARTNER</div>
-                    <p class="text-sm text-slate-600">지역 주력산업 실전 데이터셋 제공<br>DX 수요기업(30개사+) 매칭</p>
-                </div>
-
-                <!-- Partner 2 -->
-                <div onclick="updateGovDetail('edu')" class="gov-node bg-white p-6 rounded-xl shadow-lg border border-slate-200 text-center hover:border-blue-400 group relative z-10">
-                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 transition">
-                        <i class="fas fa-laptop-code text-xl text-blue-600 group-hover:text-white transition"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-slate-800">(주)데이터에듀</h4>
-                    <div class="text-slate-500 text-xs mb-2 font-mono">EDUCATION PARTNER</div>
-                    <p class="text-sm text-slate-600">실무 중심 커리큘럼 개발 참여<br>현업 데이터 사이언티스트 강사 파견</p>
-                </div>
-
-                <!-- Partner 3 -->
-                <div onclick="updateGovDetail('kibo')" class="gov-node bg-white p-6 rounded-xl shadow-lg border-2 border-yellow-400 text-center hover:bg-yellow-50 group relative z-10 transform scale-105">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-500 text-white px-3 py-0.5 rounded-full text-xs font-bold shadow-sm">CORE</div>
-                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-500 transition">
-                        <i class="fas fa-won-sign text-xl text-yellow-600 group-hover:text-white transition"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-slate-800">기술보증기금</h4>
-                    <div class="text-slate-500 text-xs mb-2 font-mono">FINANCE PARTNER</div>
-                    <p class="text-sm text-slate-600">교육 수료 기업 대상 <strong>AX 금융지원</strong><br>보증 심사 시 우대 가점 부여(검토중)</p>
-                </div>
-            </div>
-
-            <!-- Dynamic Detail Box -->
-            <div id="govDetail" class="bg-slate-800 text-white p-6 rounded-xl text-center transition-all duration-300 shadow-inner">
-                <p class="text-slate-300">
-                    <i class="fas fa-mouse-pointer mr-2 animate-bounce"></i>위의 기관 카드를 클릭하여 상세 협력 내용을 확인하세요.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 <!-- Curriculum Section -->
 <section id="curriculum" class="py-16 bg-slate-50">
@@ -437,7 +408,7 @@
                 </div>
                 <h3 class="text-xl font-bold text-slate-800 mb-3">실전 산업 데이터 활용</h3>
                 <p class="text-slate-600 mb-4 text-sm leading-relaxed">
-                    부산테크노파크(TP) 연계 산업 데이터셋 활용 지원 및 AX 선도기업/전문가 네트워킹 기회 제공.
+                    산업 데이터셋 활용 지원 및 AX 선도기업/전문가 네트워킹 기회 제공.
                 </p>
             </div>
         </div>
@@ -453,7 +424,7 @@
                 <span class="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-[#0047a0] border-4 border-white"></span>
                 <span class="text-sm font-bold text-[#0047a0] mb-1 block">02.02 (월)</span>
                 <h4 class="text-lg font-bold text-slate-800">파트너십 확정</h4>
-                <p class="text-sm text-slate-600">부산TP, 데이터에듀, 기보 미팅 및 R&R 합의</p>
+                <p class="text-sm text-slate-600">데이터에듀, 기보 미팅 및 R&R 합의</p>
             </div>
             <div class="relative">
                 <span class="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-slate-300 border-4 border-white"></span>
@@ -543,5 +514,4 @@
     }
 </script>
 </body> </html>
-
 
