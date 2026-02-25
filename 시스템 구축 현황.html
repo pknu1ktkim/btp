@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PKNU AX Academy - 실전 구축 가이드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --pknu-blue: #003876; --pknu-accent: #005bac; }
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin: 0 auto; height: 320px; max-height: 400px; }
+        .pknu-card { background: white; border: 1px solid #e2e8f0; border-radius: 1.5rem; transition: all 0.3s ease; }
+        .pknu-card:hover { border-color: var(--pknu-blue); box-shadow: 0 10px 25px -5px rgba(0, 56, 118, 0.1); }
+        .nav-active { border-left: 4px solid var(--pknu-blue); background-color: #eff6ff; color: var(--pknu-blue); font-weight: 700; }
+        .code-box { background-color: #0f172a; color: #f1f5f9; padding: 1.5rem; border-radius: 1rem; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; line-height: 1.6; border: 1px solid #1e293b; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade { animation: fadeIn 0.4s ease-out forwards; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-[#003876] rounded-xl flex items-center justify-center text-white font-black text-sm shadow-lg">PAA</div>
+                    <div>
+                        <h1 class="text-sm font-black text-slate-800 leading-none">PKNU AX Academy</h1>
+                        <p class="text-[10px] text-slate-400 font-bold tracking-widest uppercase mt-1">Implementation Blueprint v2.0</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 text-xs font-bold">
+                    <span class="text-emerald-500 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Cloud Active</span>
+                    <span class="text-slate-400">|</span>
+                    <span class="text-indigo-500 uppercase tracking-widest">Pukyong Nat'l University</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Sidebar: Task Navigator -->
+        <aside class="lg:w-80 flex-shrink-0">
+            <div class="sticky top-24 space-y-2">
+                <p class="px-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Implementation Steps</p>
+                <button onclick="renderStep('intro')" id="nav-intro" class="w-full text-left px-4 py-4 rounded-xl text-sm font-medium hover:bg-slate-100 transition-all flex items-center gap-3 nav-active">
+                    <span>📊</span> 시스템 가동 대시보드
+                </button>
+                <button onclick="renderStep('step1')" id="nav-step1" class="w-full text-left px-4 py-4 rounded-xl text-sm font-medium hover:bg-slate-100 transition-all flex items-center gap-3">
+                    <span>💾</span> STEP 1. 데이터베이스 구축
+                </button>
+                <button onclick="renderStep('step2')" id="nav-step2" class="w-full text-left px-4 py-4 rounded-xl text-sm font-medium hover:bg-slate-100 transition-all flex items-center gap-3">
+                    <span>⚙️</span> STEP 2. 행정 자동화 엔진
+                </button>
+                <button onclick="renderStep('step3')" id="nav-step3" class="w-full text-left px-4 py-4 rounded-xl text-sm font-medium hover:bg-slate-100 transition-all flex items-center gap-3">
+                    <span>📈</span> STEP 3. 인프라 모니터링
+                </button>
+                <button onclick="renderStep('step4')" id="nav-step4" class="w-full text-left px-4 py-4 rounded-xl text-sm font-medium hover:bg-slate-100 transition-all flex items-center gap-3">
+                    <span>🛡️</span> STEP 4. 보안 및 데이터 보호
+                </button>
+                <div class="pt-8 px-4">
+                    <div class="p-6 bg-indigo-900 rounded-3xl text-white shadow-xl relative overflow-hidden">
+                        <div class="absolute -right-4 -bottom-4 text-6xl opacity-10 font-black">AX</div>
+                        <p class="text-[10px] font-bold text-blue-300 uppercase mb-2">Team Size</p>
+                        <h4 class="text-xl font-black">2 People</h4>
+                        <p class="text-[10px] text-indigo-200 mt-2 leading-relaxed font-medium">단 2명의 인력으로 540명을 관리하는 지능형 운영 체계</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 min-w-0">
+            <div id="step-content" class="animate-fade">
+                <!-- Content will be dynamically rendered here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripting Engine -->
+    <script>
+        // --- Data Definitions ---
+        const stepData = {
+            intro: {
+                title: "PKNU AX Academy 스마트 운영 가동 대시보드",
+                intro: "본 가이드는 국립부경대학교 AX 특화 공동훈련센터의 매뉴얼에 명시된 4단계 구축 프로세스를 실제 기술적으로 구현하기 위한 실무 지침서입니다. 아래 차트는 현재 시스템의 구축 완성도 시뮬레이션입니다.",
+                content: `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                        <div class="pknu-card p-8">
+                            <h4 class="font-black text-slate-800 mb-6 flex justify-between">단계별 구축 완성도 <span class="text-xs text-slate-400">Total: 92%</span></h4>
+                            <div class="chart-container"><canvas id="mainChart"></canvas></div>
+                        </div>
+                        <div class="pknu-card p-8 flex flex-col justify-center">
+                            <h4 class="font-black text-slate-800 mb-4">실시간 데이터 연동 구조</h4>
+                            <p class="text-sm text-slate-500 mb-8 leading-relaxed font-medium">Frontend에서 Backend로 흐르는 데이터가 n8n을 통해 운영진의 Slack과 Notion으로 자동 전파되는 지능형 파이프라인입니다.</p>
+                            <div class="flex items-center justify-between px-4">
+                                <div class="flex flex-col items-center gap-2">
+                                    <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-xl">🌐</div>
+                                    <span class="text-[10px] font-bold text-slate-400">Portal</span>
+                                </div>
+                                <div class="text-slate-200">→</div>
+                                <div class="flex flex-col items-center gap-2">
+                                    <div class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-xl">💾</div>
+                                    <span class="text-[10px] font-bold text-slate-400">DB</span>
+                                </div>
+                                <div class="text-slate-200">→</div>
+                                <div class="flex flex-col items-center gap-2">
+                                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-xl">⚙️</div>
+                                    <span class="text-[10px] font-bold text-slate-400">n8n</span>
+                                </div>
+                                <div class="text-slate-200">→</div>
+                                <div class="flex flex-col items-center gap-2">
+                                    <div class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-xl">📱</div>
+                                    <span class="text-[10px] font-bold text-slate-400">Slack</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pknu-card p-8 bg-white border-l-4 border-l-[#003876]">
+                        <h4 class="font-black text-slate-800 mb-2">현장평가 대응 핵심 전략</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed font-medium italic">
+                            "저희 센터는 단순한 교육 홍보 사이트를 넘어, 실제 데이터베이스와 자동화 워크플로우 엔진이 결합된 '스마트 운영 체계'를 갖추고 있습니다. 이를 통해 행정 소요 시간을 90% 절감하고 훈련생 밀착 관리에 집중할 수 있는 환경을 구축했습니다."
+                        </p>
+                    </div>
+                `
+            },
+            step1: {
+                title: "STEP 1. 데이터베이스 관리 (DB Management)",
+                intro: "Supabase(PostgreSQL) 기반의 데이터베이스는 센터 운영의 '심장'입니다. 모든 훈련생 데이터의 무결성을 보장하고, 연말 성과 통계 산출을 위한 SQL 집계 환경을 구축합니다.",
+                content: `
+                    <div class="space-y-10">
+                        <div class="pknu-card p-8">
+                            <h5 class="font-bold text-slate-800 mb-4 flex items-center gap-2">🛠️ 작업 1: 테이블 스키마 구축</h5>
+                            <p class="text-sm text-slate-500 mb-6 leading-relaxed">Supabase SQL Editor에서 아래 코드를 실행하여 훈련생(` + "trainees" + `) 및 신청(` + "applications" + `) 테이블을 생성합니다. SQL 기반으로 구성해야 연말 성과 지표(수료율 등) 추출이 용이합니다.</p>
+                            <div class="code-box text-xs">
+-- 1. 훈련생 정보 테이블
+CREATE TABLE trainees (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  company TEXT,
+  phone TEXT,
+  email TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 2. 훈련 신청 내역 테이블 (관련 정보 연결)
+CREATE TABLE applications (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  trainee_id UUID REFERENCES trainees(id),
+  course_id TEXT NOT NULL, -- 예: AX-01
+  status TEXT DEFAULT '신청완료', -- 신청완료, 승인, 수료, 취소
+  applied_at TIMESTAMPTZ DEFAULT NOW()
+);
+                            </div>
+                        </div>
+                        <div class="pknu-card p-8">
+                            <h5 class="font-bold text-slate-800 mb-4 flex items-center gap-2">🔐 작업 2: RLS(행 단위 보안) 설정</h5>
+                            <p class="text-sm text-slate-500 mb-4 font-medium italic">"개인정보 보호를 위해 데이터베이스 단에서 행 단위 보안(RLS)을 적용하여, 허가받지 않은 접근을 원천 차단하고 있습니다." (현장평가 멘트)</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-4 p-4 bg-slate-50 rounded-2xl text-sm font-medium text-slate-700">
+                                    <div class="w-6 h-6 rounded-full bg-[#003876] text-white flex-shrink-0 flex items-center justify-center text-[10px]">1</div>
+                                    <span>Supabase > Table Editor > Enable RLS 활성화</span>
+                                </li>
+                                <li class="flex items-start gap-4 p-4 bg-slate-50 rounded-2xl text-sm font-medium text-slate-700">
+                                    <div class="w-6 h-6 rounded-full bg-[#003876] text-white flex-shrink-0 flex items-center justify-center text-[10px]">2</div>
+                                    <span>Anon Key 접근 시 'Insert'만 허용하고 'Select'는 관리자 권한으로만 제한하는 Policy 작성</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            step2: {
+                title: "STEP 2. 행정 자동화 실행 (Administrative Automation)",
+                intro: "n8n 엔진은 운영진 2명의 업무를 대신 수행하는 '디지털 비서'입니다. DB에 새로운 데이터가 생기면 n8n이 즉시 이를 감지하여 알림과 기록을 수행합니다.",
+                content: `
+                    <div class="space-y-10">
+                        <div class="pknu-card p-8">
+                            <h5 class="font-bold text-slate-800 mb-4">⚙️ 자동화 워크플로우 노드 구성</h5>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-6 bg-blue-50 rounded-2xl border border-blue-100">
+                                    <div class="text-[10px] font-black text-blue-600 mb-2 uppercase tracking-widest">Trigger Node</div>
+                                    <h6 class="font-black text-slate-800 mb-2">Supabase Node</h6>
+                                    <p class="text-xs text-slate-500 leading-relaxed font-medium">Resource: Row<br>Operation: Created<br>Table: applications<br>데이터가 생성되는 즉시 워크플로우 시작</p>
+                                </div>
+                                <div class="p-6 bg-emerald-50 rounded-2xl border border-emerald-100">
+                                    <div class="text-[10px] font-black text-emerald-600 mb-2 uppercase tracking-widest">Action Node 1</div>
+                                    <h6 class="font-black text-slate-800 mb-2">Slack Node</h6>
+                                    <p class="text-xs text-slate-500 leading-relaxed font-medium">Channel: #운영-알림<br>Text: "🚀 신규 신청: {{ $json.trainee_name }} ({{ $json.course_id }})"</p>
+                                </div>
+                                <div class="p-6 bg-amber-50 rounded-2xl border border-amber-100">
+                                    <div class="text-[10px] font-black text-amber-600 mb-2 uppercase tracking-widest">Action Node 2</div>
+                                    <h6 class="font-black text-slate-800 mb-2">Notion Node</h6>
+                                    <p class="text-xs text-slate-500 leading-relaxed font-medium">Database: 훈련생 관리 DB<br>Action: Create Page<br>모든 훈련생 정보를 자동 아카이빙</p>
+                                </div>
+                                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-center">
+                                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">+ 알림톡 API 연동 예정</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pknu-card p-8 bg-slate-900 text-white border-none relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-8 opacity-10 text-6xl font-black italic">Demo</div>
+                            <h5 class="font-bold mb-4">현장 시연 시나리오 (준비물)</h5>
+                            <ul class="text-xs space-y-3 font-medium text-slate-400">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span> n8n Desktop App 또는 Cloud 계정 로그인 상태 유지</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span> 팀장님 스마트폰 Slack 앱 알림 소리 활성화</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span> 평가위원이 보는 앞에서 테스트 신청 수행 시연</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            step3: {
+                title: "STEP 3. GPU 인프라 관제 (Infrastructure Monitoring)",
+                intro: "고가의 GPU 자원을 보호하고 교육의 중단 없는 진행을 보장하기 위한 관제 시스템입니다. Prometheus로 데이터를 수집하고 Grafana로 시각화합니다.",
+                content: `
+                    <div class="space-y-10">
+                        <div class="pknu-card p-8">
+                            <h5 class="font-bold text-slate-800 mb-6 flex justify-between">실시간 모니터링 핵심 지표 <span class="text-[10px] font-bold text-slate-400">4 Nodes Active</span></h5>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-xs font-bold text-slate-700">GPU Temperature</span>
+                                        <span class="text-[10px] font-black text-red-500 uppercase tracking-tighter">Threshold: 80°C</span>
+                                    </div>
+                                    <div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="w-[55%] h-full bg-blue-500 transition-all duration-1000"></div></div>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-xs font-bold text-slate-700">VRAM Allocation</span>
+                                        <span class="text-[10px] font-black text-emerald-500 uppercase tracking-tighter">Usage: 32GB / 80GB</span>
+                                    </div>
+                                    <div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="w-[40%] h-full bg-emerald-500 transition-all duration-1000"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pknu-card p-8">
+                            <h5 class="font-bold text-slate-800 mb-4">🚨 장애 대응 로직 (Alerting)</h5>
+                            <p class="text-sm text-slate-500 mb-6 font-medium leading-relaxed">Prometheus Alertmanager를 통해 팀장님 슬랙으로 전송되는 경고 규칙입니다.</p>
+                            <div class="code-box text-xs">
+- alert: GPUOverheating
+  expr: gpu_temp > 80
+  for: 5m
+  labels:
+    severity: critical
+  annotations:
+    summary: "서버실 GPU 온도 위험 수준 ({{ $value }}°C)"
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            step4: {
+                title: "STEP 4. 보안 및 데이터 보호 (Security & PIPA)",
+                intro: "개인정보보호법(PIPA)을 준수하고 훈련생 데이터를 안전하게 관리하기 위한 기술적/행정적 조치입니다.",
+                content: `
+                    <div class="space-y-10">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="p-6 pknu-card border-slate-100 text-center">
+                                <div class="text-3xl mb-3">🛡️</div>
+                                <h6 class="font-bold text-slate-800 text-sm">2단계 인증 (2FA)</h6>
+                                <p class="text-[10px] text-slate-400 mt-2 font-medium leading-relaxed">Supabase/n8n/Slack 모든 관리 계정에 OTP 인증 적용</p>
+                            </div>
+                            <div class="p-6 pknu-card border-slate-100 text-center">
+                                <div class="text-3xl mb-3">🔏</div>
+                                <h6 class="font-bold text-slate-800 text-sm">HTTPS/SSL</h6>
+                                <p class="text-[10px] text-slate-400 mt-2 font-medium leading-relaxed">모든 데이터 전송 구간 암호화 프로토콜 강제 적용</p>
+                            </div>
+                            <div class="p-6 pknu-card border-slate-100 text-center">
+                                <div class="text-3xl mb-3">📋</div>
+                                <h6 class="font-bold text-slate-800 text-sm">접근 로그 보존</h6>
+                                <p class="text-[10px] text-slate-400 mt-2 font-medium leading-relaxed">DB 변경 이력을 180일 이상 자동 보존하도록 설정</p>
+                            </div>
+                        </div>
+                        <div class="pknu-card p-8 bg-slate-50">
+                            <h5 class="font-bold text-slate-800 mb-4">법적 대응 증빙 서류 (현장 준비)</h5>
+                            <ul class="text-xs space-y-4 font-medium text-slate-600">
+                                <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span> 개인정보 처리 방침 (홈페이지 하단 게시 및 수집 동의서)</li>
+                                <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span> 시스템 관리자 권한 부여 및 관리 지침서</li>
+                                <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span> 데이터 백업 및 장애 복구 계획서</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // --- Interaction Handlers ---
+        let mainChart = null;
+
+        function renderStep(id) {
+            // Update Navigation UI
+            document.querySelectorAll('.role-tab, aside button').forEach(btn => btn.classList.remove('nav-active'));
+            const activeBtn = document.getElementById(`nav-${id}`);
+            if (activeBtn) activeBtn.classList.add('nav-active');
+
+            // Update Content
+            const data = stepData[id];
+            const container = document.getElementById('step-content');
+            
+            container.classList.remove('animate-fade');
+            void container.offsetWidth; // Trigger reflow
+
+            container.innerHTML = `
+                <div class="mb-12">
+                    <h2 class="text-3xl font-black text-slate-900 tracking-tight mb-4">${data.title}</h2>
+                    <p class="text-lg text-slate-500 leading-relaxed font-medium">${data.intro}</p>
+                </div>
+                ${data.content}
+            `;
+            container.classList.add('animate-fade');
+
+            if (id === 'intro') initChart();
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('mainChart').getContext('2d');
+            if (mainChart) mainChart.destroy();
+            
+            mainChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['DB (Step 1)', 'Auto (Step 2)', 'Infra (Step 3)', 'Security (Step 4)'],
+                    datasets: [{
+                        label: '구축 완성도 (%)',
+                        data: [100, 95, 88, 85],
+                        backgroundColor: '#003876',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { x: { beginAtZero: true, max: 100, grid: { display: false } }, y: { grid: { display: false } } }
+                }
+            });
+        }
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStep('intro');
+        });
+    </script>
+</body>
+</html>
